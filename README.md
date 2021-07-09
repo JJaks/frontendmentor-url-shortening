@@ -47,4 +47,4 @@ Lisa nõuded:
 - HTML ei pea olema SEO sõbralik (kui kasutad semantilisi HTML elemente, siis boonuspunktid) 
 - CSS klassid võiks olla komponendi põhised (kui kasutad BEMi, siis boonuspunktid) 
 - Lahendus peaks toimima Chrome-s, Firefox-is, Microsoft Edge-is ja Safari-s (kui sa ei saa mõnda brauserit kontrollida, siis pole hullu) 
-- Kood on puhas (Clean code) r
+- Kood on puhas (Clean code) 
