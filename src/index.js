@@ -31,8 +31,7 @@ async function shortenURL() {
         const resp = await fetch(
             `https://api.shrtco.de/v2/shorten?url=${urlInputField.value}`,
             {
-                method: "post",
-                body: "JSON.stringify(opts)",
+                method: "post"
             }
         );
         const data = await resp.json();
@@ -74,7 +73,6 @@ function createResultEl(url) {
 }
 
 /* Listeners */
-
 
 
 // Copy button event listener
