@@ -356,6 +356,7 @@ footer {
     transform: translateX(-50%);
     left: 22%;
     top: -15%;
+    margin: 0;
 }
 
 .features-flex {
@@ -479,6 +480,14 @@ footer {
     grid-template-rows: auto;
 }
 
+.footer__social-media-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
 .footer__social-media-link {
     text-decoration: none;
     margin-left: 0.5rem;
@@ -486,7 +495,6 @@ footer {
 
 .footer__social-media-link:hover {
     filter: invert(25%) sepia(22%) saturate(1042%) hue-rotate(132deg) brightness(110%) contrast(86%);
-
 }
 
 .attribution {
