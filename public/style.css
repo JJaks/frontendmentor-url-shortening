@@ -283,7 +283,7 @@ footer {
     max-width: calc(100% - 500px);
 }
 
-.shortened-links section {
+.shortened-links div {
     background-color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -573,7 +573,7 @@ footer {
         margin-left: 0;
     }
 
-    section.shortened-links section {
+    section.shortened-links div {
         background-color: white;
         display: block;
         border-radius: 8px;
@@ -583,11 +583,15 @@ footer {
         text-align: left;
     }
 
-    section.shortened-links section hr {
+    .shortened-link {
+        margin-right: 10px;
+    }
+
+    section.shortened-links div hr {
         background-color: hsla(257, 0%, 95%);
         margin: 0 -16px 20px;
         height: 2px;
-        display: block;
+        display: none;
         border: none;
     }
 
