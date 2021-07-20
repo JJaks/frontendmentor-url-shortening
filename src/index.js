@@ -56,11 +56,11 @@ async function shortenURL() {
 }
 
 function createResultEl(url) {
-    // Display shortened link section
-    let result = document.createElement("section");
+    // Display shortened link div 
+    let result = document.createElement("div");
     result.classList.add("shortened-link");
 
-    // Add results to shortened link section
+    // Add results to shortened link div
     result.innerHTML = `
     <p class="link-to-shorten">${urlInputField.value}</p>
     <hr>
