@@ -187,6 +187,7 @@ footer {
     grid-area: 2 / 1 / auto / span 2;
     padding-bottom: 6rem;
     padding: 0 15% 10rem;
+    overflow: hidden;
 }
 
 .primary__aside {
@@ -202,7 +203,7 @@ footer {
 }
 
 .primary__img {
-    max-width: 100%;
+    max-width: 150%;
 }
 
 .primary__btn--primary {
@@ -297,13 +298,17 @@ footer {
     justify-content: space-between;
 }
 
+.shortened-links hr {
+    display: none;
+}
+
 /* Shorten form region END */
 
 /* Secondary section start (Advanced statistics, features) region START*/
 .features-flex__feature--brand-recognition {
     background-color: white;
     box-shadow: 0 2px 6px hsl(0deg 0% 0% / 5%);
-    max-width: 280px;
+    max-width: 350px;
     border-radius: 8px;
     position: relative;
     padding: 5rem 1rem 2rem;
@@ -313,7 +318,7 @@ footer {
 .features-flex__feature--detailed-records {
     background-color: white;
     box-shadow: 0 2px 6px hsl(0deg 0% 0% / 5%);
-    max-width: 280px;
+    max-width: 350px;
     border-radius: 8px;
     position: relative;
     padding: 5rem 1rem 2rem;
@@ -324,7 +329,7 @@ footer {
 .features-flex__feature--fully-customizable {
     background-color: white;
     box-shadow: 0 2px 6px hsl(0deg 0% 0% / 5%);
-    max-width: 280px;
+    max-width: 350px;
     border-radius: 8px;
     position: relative;
     padding: 5rem 1rem 2rem;
@@ -364,7 +369,7 @@ footer {
     align-items: center;
     gap: 30px;
     flex-flow: row nowrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .features-flex__h3 {
@@ -573,32 +578,28 @@ footer {
         margin-left: 0;
     }
 
-    section.shortened-links div {
+    .shortened-links div {
         background-color: white;
         display: block;
         border-radius: 8px;
         box-shadow: 0 4px 12px hsl(0deg 0% 0% / 10%);
         margin-bottom: 1rem;
-        padding: 1rem;
+        padding: 0.5rem;
         text-align: left;
     }
 
-    .shortened-link {
-        margin-right: 10px;
-    }
-
-    section.shortened-links div hr {
+    .shortened-links div hr {
         background-color: hsla(257, 0%, 95%);
         margin: 0 -16px 20px;
         height: 2px;
-        display: none;
+        display: block;
         border: none;
     }
 
     .btn--copy {
         display: block;
-        margin: 0;
         text-align: center;
+        margin: 0;
     }
 
     .boost {
@@ -616,7 +617,6 @@ footer {
 
     .nav-toggle {
         font-size: 1.8rem;
-        z-index: 99;
         display: inline-block !important;
     }
 
@@ -637,9 +637,7 @@ footer {
     }
 
     .main-nav__ul--active {
-        box-sizing: border-box;
         display: flex;
-        z-index: 99;
     }
 
     .main-nav__li {
@@ -665,11 +663,11 @@ footer {
         align-items: center;
         gap: 0;
         flex-flow: column nowrap;
-        margin-top: 3rem;
+        margin-top: 0;
     }
 
     .features-flex__feature--brand-recognition {
-        margin-top: 2rem;
+        margin-top: 0;
     }
 
     .features-flex__feature--detailed-records {
