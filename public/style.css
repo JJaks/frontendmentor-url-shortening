@@ -728,3 +728,14 @@ footer {
 }
 
 /* Mobile & tablet viewport region END */
+
+/* 4k resolution region START */
+@media only screen and (min-width: 2800px) {
+
+    .features-flex__feature--brand-recognition::after,
+    .features-flex__feature--detailed-records::after {
+        width: 120%;
+    }
+}
+
+/* 4k resolution region END */
