@@ -6,8 +6,27 @@ const urlInputField = document.getElementById("shorten");
 const errorMsg = document.getElementById("error-msg");
 const shortenedLinks = document.querySelector(".shortened-links");
 
-// Display previously shortened links from localstorage 
-shortenedLinks.innerHTML = localStorage.getItem("shortenedLinks");
+function storeShortenedLink(original, shortened) {
+    let existing = loadShortenedLinks();
+    existing.push({ original, shortened });
+    localStorage.setItem("shortenedLinks", JSON.stringify(existing));
+}
+
+function loadShortenedLinks() {
+    let existing = localStorage.getItem("shortenedLinks");
+    if (!existing) {
+        return [];
+    }
+
+    let parsed;
+    try {
+        parsed = JSON.parse(existing);
+    } catch (e) {
+        console.error("Failed to load previous shortened links", e);
+        parsed = [];
+    }
+    return parsed;
+}
 
 function displayMobileNav() {
     // Change nav icon & display mobile nav
@@ -32,7 +51,11 @@ function shortenURL() {
             console.error(data.error);
             throw new Error("ShortCode API failed");
         }
-        createResultEl(data.result.short_link);
+        let original = urlInputField.value;
+        let shortLink = data.result.short_link;
+
+        storeShortenedLink(original, shortLink);
+        shortenedLinks.appendChild(createShortLinkRow(original, shortLink));
     }).catch(err => {
         console.error(err);
         formShorten.classList.add("shorten-form--empty");
@@ -43,30 +66,30 @@ function shortenURL() {
     });
 }
 
-function createResultEl(url) {
-    // Display shortened link div 
+function createShortLinkRow(original, shortened) {
     let result = document.createElement("div");
     result.classList.add("shortened-link");
 
-    // Add results to shortened link div
     result.innerHTML = `
-    <p class="link-to-shorten">${urlInputField.value}</p>
+    <p class="link-to-shorten"><a class="original-link" href="${original}" target="_blank" rel="noopener">${original}</a></p>
     <hr>
-    <p class="shortened-link">${url}</p>
+    <a href="https://${shortened}" class="shortened-link" target="_blank" rel="noopener">${shortened}</a>
     <a href="#" class="btn btn--primary btn--copy" role='button'>Copy</a>`;
-    shortenedLinks.appendChild(result);
 
-    // Save results to localstorage
-    localStorage.setItem("shortenedLinks", shortenedLinks.innerHTML);
+    return result;
 }
+
+// Display previously shortened links from localstorage 
+loadShortenedLinks().map(elem => createShortLinkRow(elem.original, elem.shortened)).forEach(elem => {
+    shortenedLinks.appendChild(elem);
+});
 
 /* Listeners */
 
 // Copy button event listener
 shortenedLinks.addEventListener("click", (e) => {
-    e.preventDefault();
-
     if (e.target.classList.contains("btn--copy")) {
+        e.preventDefault();
 
         // Change copy icon and background
         e.target.classList.add("btn--copied");
