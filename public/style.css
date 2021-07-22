@@ -271,6 +271,7 @@ footer {
 .shortened-link {
     color: var(--cyan);
     margin-left: auto;
+    text-decoration: none;
 }
 
 .shortened-links {
@@ -280,8 +281,12 @@ footer {
 
 .link-to-shorten {
     margin-right: 1rem;
-    color: var(--very-dark-violet);
     max-width: calc(100% - 500px);
+}
+
+.original-link {
+    text-decoration: none;
+    color: var(--very-dark-violet);
 }
 
 .shortened-links div {
