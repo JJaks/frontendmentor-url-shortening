@@ -22,7 +22,7 @@ function loadShortenedLinks() {
     try {
         parsed = JSON.parse(existing);
     } catch (e) {
-        console.error("Failed to load previous shortened links", e);
+        console.error("Failed to load previously shortened links", e);
         parsed = [];
     }
     return parsed;
