@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 :root {
     /* Primary colors */
@@ -422,7 +422,7 @@ footer {
 
 
 
-.boost__h1 {
+.boost__h2 {
     font-size: 40px;
 }
 
@@ -536,7 +536,7 @@ footer {
         padding: 2rem 5% 2rem;
     }
 
-    .boost__h1 {
+    .boost__h2 {
         font-size: 30px;
     }
 
