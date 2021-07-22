@@ -1,4 +1,4 @@
-/* Variables */
+// Variables 
 const mobileNavToggle = document.getElementById("icon-mobile-nav-toggle");
 const mobileNav = document.getElementById("nav-links");
 const formShorten = document.getElementById("shorten-form");
@@ -6,53 +6,41 @@ const urlInputField = document.getElementById("shorten");
 const errorMsg = document.getElementById("error-msg");
 const shortenedLinks = document.querySelector(".shortened-links");
 
-/* Display previously shortened links from localstorage */
+// Display previously shortened links from localstorage 
 shortenedLinks.innerHTML = localStorage.getItem("shortenedLinks");
 
 function displayMobileNav() {
-    // Change nav icon
+    // Change nav icon & display mobile nav
     mobileNavToggle.className = "fas fa-times nav-toggle";
-    // Display mobile nav
     mobileNav.classList.add("main-nav__ul--active");
 }
 
 function hideMobileNav() {
-    // Reset nav icon
+    // Reset nav icon & hide mobile nav
     mobileNavToggle.className = "fas fa-bars nav-toggle";
-    // Hide mobile nav
     mobileNav.classList.remove("main-nav__ul--active");
 }
 
-async function shortenURL() {
-    let shortLink;
+function shortenURL() {
+    let shrtnURL = `https://api.shrtco.de/v2/shorten?url=${encodeURIComponent(urlInputField.value)}`;
 
-    try {
-        document.getElementById("loader").style.display = "block";
-        const resp = await fetch(
-            `https://api.shrtco.de/v2/shorten?url=${urlInputField.value}`,
-            {
-                method: "post"
-            }
-        );
-        const data = await resp.json();
+    document.getElementById("loader").style.display = "block";
+    formShorten.classList.remove("shorten-form--empty");
+
+    return fetch(shrtnURL).then(res => res.json()).then(data => {
+        if (!data.ok) {
+            console.error(data.error);
+            throw new Error("ShortCode API failed");
+        }
+        createResultEl(data.result.short_link);
+    }).catch(err => {
+        console.error(err);
+        formShorten.classList.add("shorten-form--empty");
+        errorMsg.innerHTML = "Please add a valid link!";
+    }).finally(() => {
         document.getElementById("loader").style.display = "none";
-        shortLink = data.result.short_link;
-    } catch (error) {
-        shortLink = "failed";
-    }
-
-    if (shortLink === "failed" && urlInputField.value.length === 0) {
-        formShorten.classList.add("shorten-form--empty");
-        errorMsg.innerText = "Please add a link";
-    } else if (shortLink === "failed") {
-        formShorten.classList.add("shorten-form--empty");
-        errorMsg.innerText = "Please add a valid url";
-    } else {
-        formShorten.classList.remove("shorten-form--empty");
-        createResultEl(shortLink);
-        // clear input field
         urlInputField.value = "";
-    }
+    });
 }
 
 function createResultEl(url) {
@@ -73,7 +61,6 @@ function createResultEl(url) {
 }
 
 /* Listeners */
-
 
 // Copy button event listener
 shortenedLinks.addEventListener("click", (e) => {
@@ -104,7 +91,6 @@ shortenedLinks.addEventListener("click", (e) => {
 
 // Toggle mobile nav
 mobileNavToggle.addEventListener("click", () => {
-    console.log(mobileNav);
     if (mobileNavToggle.classList.contains("fa-bars")) {
         displayMobileNav();
     } else {
@@ -114,7 +100,7 @@ mobileNavToggle.addEventListener("click", () => {
 
 // Nav functionality
 mobileNav.addEventListener("click", (e) => {
-    if (e.target.tagName === "A") {
+    if (e.target.tagName.toLowerCase() === "a") {
         hideMobileNav();
     }
 });
