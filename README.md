@@ -26,6 +26,7 @@ Additional requirements:
 - Clean code
 - Solution should work on every major browser
 
+Tested browsers: Chrome, Firefox, Edge, Safari.
 # Frontend Mentor - Shortly URL shortening API Challenge - Estonian
 ## Väljakutse
 
@@ -48,3 +49,5 @@ Lisa nõuded:
 - CSS klassid võiks olla komponendi põhised (kui kasutad BEMi, siis boonuspunktid) 
 - Lahendus peaks toimima Chrome-s, Firefox-is, Microsoft Edge-is ja Safari-s (kui sa ei saa mõnda brauserit kontrollida, siis pole hullu) 
 - Kood on puhas (Clean code) 
+
+Testitud brauserid: Chrome, Firefox, Edge, Safari.
